@@ -111,7 +111,7 @@ public class MsAuthPlugin: CAPPlugin {
         do {
             let authority =
                 customAuthorityURL == "https://login.chinacloudapi.cn" ?
-                try MSALAADAuthority(cloudInstance: MSALAzureCloudInstance.chinaCloudInstance, audienceType: MSALAudienceType.azureADMultipleOrgsAudience, rawTenant: tenant) :
+            try MSALAADAuthority(cloudInstance: MSALAzureCloudInstance.chinaCloudInstance, audienceType: MSALAudienceType.azureADMyOrgOnlyAudience, rawTenant: tenant) :
                 (authorityType == .aad
                     ? try MSALAADAuthority(url: authorityURL) :
                     try MSALB2CAuthority(url: authorityURL))
