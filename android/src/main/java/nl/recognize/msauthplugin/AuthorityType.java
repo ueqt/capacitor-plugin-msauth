@@ -1,4 +1,4 @@
-package nl.recognize.msauthplugin;
+package nl.ueqt.msauthplugin;
 
 public enum AuthorityType {
     AAD,

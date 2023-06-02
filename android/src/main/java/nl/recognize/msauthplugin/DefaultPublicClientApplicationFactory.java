@@ -1,4 +1,4 @@
-package nl.recognize.msauthplugin;
+package nl.ueqt.msauthplugin;
 
 import android.content.Context;
 import androidx.annotation.NonNull;

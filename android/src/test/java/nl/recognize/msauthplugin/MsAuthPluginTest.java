@@ -1,4 +1,4 @@
-package nl.recognize.msauthplugin;
+package nl.ueqt.msauthplugin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -32,11 +32,11 @@ import org.mockito.stubbing.Answer;
 @ExtendWith(MockitoExtension.class)
 class MsAuthPluginTest {
 
-    public static final String AUTHORITY_URL = "https://www.recognize.nl";
+    public static final String AUTHORITY_URL = "https://www.ueqt.nl";
     public static final String KEY_HASH = "cmFuZG9tLWtleS1oYXNoLW9idGFpbmVkLWZyb20tYXp1cmU=";
     public static final String TENANT = "f6785b1e-7ae8-4c41-8b72-d418f03cc1d7";
     public static final String CLIENT_ID = "3892f330-5945-4db6-9167-4d5e644ab840";
-    public static final String DOMAIN_HINT = "recognize.nl";
+    public static final String DOMAIN_HINT = "ueqt.nl";
     public static final String ID_TOKEN =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
@@ -74,7 +74,7 @@ class MsAuthPluginTest {
 
                 @Override
                 public AppCompatActivity getActivity() {
-                    lenient().when(applicationContext.getPackageName()).thenReturn("nl.recognize.project-x");
+                    lenient().when(applicationContext.getPackageName()).thenReturn("nl.ueqt.project-x");
                     lenient().when(mockedActivity.getApplicationContext()).thenReturn(applicationContext);
 
                     return mockedActivity;
@@ -102,7 +102,7 @@ class MsAuthPluginTest {
             ID_TOKEN,
             new String[] { "mocked-scope", "openid", "profile" }
         );
-        when(singleAccountPublicClientApplication.acquireTokenSilent(new String[] { "mocked-scope" }, "https://www.recognize.nl"))
+        when(singleAccountPublicClientApplication.acquireTokenSilent(new String[] { "mocked-scope" }, "https://www.ueqt.nl"))
             .thenReturn(result);
 
         ArgumentCaptor<JSObject> jsObjectCaptor = ArgumentCaptor.forClass(JSObject.class);
