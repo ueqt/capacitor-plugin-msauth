@@ -14,4 +14,4 @@ jobs:
       - run: npm ci
       - run: npm set "//registry.npmjs.org/:_authToken" ${{ secrets.NPM_TOKEN }}
       - run: npm version --commit-hooks=false --allow-same-version=true ${GITHUB_REF##*/}
-      - run: npm publish
+      - run: npm publish --access public
