@@ -109,8 +109,12 @@ public class MsAuthPlugin: CAPPlugin {
         }
 
         do {
-            let authority = customAuthorityURL == "https://login.chinacloudapi.cn" ? try MSALAADAuthority(cloudInstance: MSALAzureCloudInstance.chinaCloudInstance, audienceType: MSALAudienceType.azureADMultipleOrgsAudience, rawTenant: tenant) : (authorityType == .aad
-            ? try MSALAADAuthority(url: authorityURL) : try MSALB2CAuthority(url: authorityURL))
+            let authority =
+                customAuthorityURL == "https://login.chinacloudapi.cn" ?
+                try MSALAADAuthority(cloudInstance: MSALAzureCloudInstance.chinaCloudInstance, audienceType: MSALAudienceType.azureADMultipleOrgsAudience, rawTenant: tenant) :
+                (authorityType == .aad
+                    ? try MSALAADAuthority(url: authorityURL) :
+                    try MSALB2CAuthority(url: authorityURL))
             
             if domainHint != nil {
                 print("Warning: domain hint is currently not supported on iOS.")
