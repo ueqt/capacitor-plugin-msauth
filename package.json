@@ -1,6 +1,6 @@
 {
   "name": "@ueqt/capacitor-plugin-msauth",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "This plugin enables MSAL support for Capacitor.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
