@@ -24,7 +24,7 @@ public class MsAuthPlugin: CAPPlugin {
 
             call.resolve([
                 "accessToken": result.accessToken,
-                "idToken": result.idToken,
+                "idToken": result.idToken ?? "",
                 "scopes": result.scopes
             ])
         }
@@ -109,9 +109,12 @@ public class MsAuthPlugin: CAPPlugin {
         }
 
         do {
-            let authority = authorityType == .aad
-                ? try MSALAADAuthority(url: authorityURL) : try MSALB2CAuthority(url: authorityURL)
-
+            var authority = authorityType == .aad
+            ? try MSALAADAuthority(url: authorityURL) : try MSALB2CAuthority(url: authorityURL)
+            if customAuthorityURL == "https://login.chinacloudapi.cn" {
+                authority = try MSALAADAuthority(cloudInstance: MSALAzureCloudInstance.chinaCloudInstance, audienceType: MSALAudienceType.azureADAndPersonalMicrosoftAccountAudience, rawTenant: tenant)
+            }
+            
             if domainHint != nil {
                 print("Warning: domain hint is currently not supported on iOS.")
             }
